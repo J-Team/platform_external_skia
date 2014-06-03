@@ -47,14 +47,6 @@ SkBitmapProcShader::SkBitmapProcShader(SkFlattenableReadBuffer& buffer)
     fFlags = 0; // computed in setContext
 }
 
-void SkBitmapProcShader::beginRect(int x, int y, int width) {
-    fState.beginRect(x, y, width);
-}
-
-void SkBitmapProcShader::endRect() {
-    fState.endRect();
-}
-
 SkShader::BitmapType SkBitmapProcShader::asABitmap(SkBitmap* texture,
                                                    SkMatrix* texM,
                                                    TileMode xy[]) const {

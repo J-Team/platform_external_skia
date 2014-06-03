@@ -32,12 +32,6 @@ SkShader::~SkShader() {
     SkASSERT(!fInSetContext);
 }
 
-void SkShader::beginRect(int x, int y, int width) {
-}
-
-void SkShader::endRect() {
-}
-
 void SkShader::flatten(SkFlattenableWriteBuffer& buffer) const {
     this->INHERITED::flatten(buffer);
     bool hasLocalM = this->hasLocalMatrix();

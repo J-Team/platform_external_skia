@@ -516,12 +516,6 @@ LOCAL_SRC_FILES += \
 ifeq ($(TARGET_ARCH),arm)
 
 ifeq ($(ARCH_ARM_HAVE_NEON),true)
-
-LOCAL_CFLAGS += -DNEON_BLIT_ANTI_H
-ifneq ($(WITH_QC_PERF),true)
-    LOCAL_CFLAGS += -DNEON_BLIT_H
-endif
-
 LOCAL_SRC_FILES += \
 	src/opts/memset16_neon.S \
 	src/opts/memset32_neon.S \
@@ -572,12 +566,6 @@ LOCAL_STATIC_LIBRARIES := \
 	libwebp-decode \
 	libwebp-encode
 
-ifeq ($(call is-vendor-board-platform,QCOM),true)
-ifeq ($(WITH_QC_PERF),true)
-	LOCAL_WHOLE_STATIC_LIBRARIES += libqc-skia
-endif
-endif
-
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/include/core \
 	$(LOCAL_PATH)/include/config \
@@ -620,12 +608,6 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := \
 	$(LOCAL_PATH)/include/ports \
 	$(LOCAL_PATH)/include/utils \
 	$(LOCAL_PATH)/include/lazy
-
-# SkTextBox used by Samsung's libtvout
-ifeq ($(BOARD_USES_SKTEXTBOX),true)
-LOCAL_SRC_FILES += src/views/SkTextBox.cpp
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/include/views
-endif
 
 # Add SFTNLY support for PDF (which in turns depends on ICU)
 LOCAL_C_INCLUDES += external/sfntly/cpp/src
